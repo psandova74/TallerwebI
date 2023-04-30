@@ -12,8 +12,24 @@ public class EjemploTDD {
 	 * 
 	 * */
 	
-	public String EvaluarContrasenia() {
-		return "";
+	public String EvaluarContrasenia(String contrasenia) {
+		if (contrasenia == null || contrasenia== "")
+			return "DEBIL";
+		boolean alMenos8Caracteres = tieneAlMenos8Caracteres(contrasenia);
+		boolean alMenos2Letras = tieneAlMenos2Letras(contrasenia);
+		
+		if (alMenos8Caracteres && alMenos2Letras)
+			return "FUERTE";
+		if (alMenos8Caracteres || alMenos2Letras) 
+			return "MEDIANA";
+		return "DEBIL";
 	}
-
+	
+	private boolean tieneAlMenos8Caracteres(String contrasenia) {
+		return contrasenia.length()>7;
+	}
+	
+	private boolean tieneAlMenos2Letras(String contrasenia) {
+		return contrasenia.matches(".*[a-zA-Z].*[a-zA-Z].*");
+	}
 }

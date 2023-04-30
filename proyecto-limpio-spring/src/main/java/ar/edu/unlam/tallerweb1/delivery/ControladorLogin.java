@@ -27,6 +27,18 @@ public class ControladorLogin {
 		this.servicioLogin = servicioLogin;
 	}
 
+	@RequestMapping("/probando.jsp")
+	public ModelAndView probandoJSP(){
+		ModelMap modelo = new ModelMap();
+		
+		String[] windows = new String[] {"Windows XP", "Windows Vista", "Windows 7", "Windows 8", "Windows 10"};
+		modelo.put("numeroRamdom", Math.random());
+		modelo.put("windows", windows);
+		
+		return new ModelAndView("probandojsp",modelo);
+		
+	}
+	
 	// Este metodo escucha la URL localhost:8080/NOMBRE_APP/login si la misma es invocada por metodo http GET
 	@RequestMapping("/login")
 	public ModelAndView irALogin() {
